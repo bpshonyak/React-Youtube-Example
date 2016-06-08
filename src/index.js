@@ -7,6 +7,7 @@ import YTSearch from 'youtube-api-search';
 
 // Import components
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 // Youtube API Key
 const API_KEY = "AIzaSyACpKIVaL4UeXbKhagm3PKaViUwkSh-yhM";
@@ -22,8 +23,8 @@ class App extends Component {
     }
 
     // Fetch inital YouTube videos
-    YTSearch({ key: API_KEY, term: 'sol' }, function(data){
-      console.log(data);
+    YTSearch({ key: API_KEY, term: 'sol' }, (videos) => {
+      this.setState({ videos }); // ES6 sugar for videos: videos
     });
 
   }
@@ -31,6 +32,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
