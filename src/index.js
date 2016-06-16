@@ -1,3 +1,6 @@
+// Improt Lodash
+import _ from 'lodash';
+
 // Import React
 import React, { Component } from 'react'; // var Component = React.Component
 import ReactDOM from 'react-dom';
@@ -43,9 +46,13 @@ class App extends Component {
   }
 
   render(){
+
+    // Using lodash to throttle function calls
+    const videoSearch = _.debounce(term => { this.searchTerm(term) }, 300);
+
     return (
       <div>
-        <SearchBar onSearchTermChange={ term => this.searchTerm(term) }/>
+        <SearchBar onSearchTermChange={ videoSearch } />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           onVideoSelect={ selectedVideo => this.setState({selectedVideo}) }
