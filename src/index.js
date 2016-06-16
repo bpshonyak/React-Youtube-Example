@@ -25,7 +25,7 @@ class App extends Component {
     }
 
     // Fetch inital YouTube videos
-    this.searchTerm("drake", (firstVideo) => this.setState({selectedVideo: firstVideo}));
+    this.searchTerm("drake", firstVideo => this.setState({selectedVideo: firstVideo}));
 
   }
 
